@@ -16,7 +16,7 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* ── Top Bar: collapsible on scroll ── */}
       <div
-        className={`bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800 transition-all duration-300 overflow-hidden ${
+        className={`bg-zinc-950/90 backdrop-blur-md  transition-all duration-300 overflow-hidden ${
           scrolled ? "max-h-0 opacity-0 border-b-0" : "max-h-16 opacity-100"
         }`}
       >
@@ -39,7 +39,7 @@ export function Navbar() {
       </div>
 
       {/* ── Bottom Bar: always fixed ── */}
-      <div className="bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
+      <div className="bg-zinc-950/90 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 h-12 flex items-center justify-between">
           <Link
             to="/"
