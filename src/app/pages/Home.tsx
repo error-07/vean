@@ -174,26 +174,23 @@ export function Home() {
               Fixed pricing for your entire contract. Just ludicrously fast full fibre broadband.
             </p>
 
-
-          <div className="grid grid-cols-3 gap-x-2 gap-y-2">
-            {bubbles.map((bubble, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.35 + idx * 0.07, duration: 0.3, ease: "easeOut" }}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-blue-500/40 hover:bg-zinc-800 transition-colors group cursor-default text-xs"
-      style={{ minWidth: "0" }}
-      >
-                 <span className="text-blue-400 group-hover:scale-110 transition-transform">
-        {bubble.icon}
-      </span>
-      <span className="text-blue-100 font-semibold whitespace-nowrap">
-        {bubble.label}
-        </span>
-              </motion.div>
-            ))}
-          </div>
+            <div className="grid grid-cols-3 gap-x-2 gap-y-2">
+              {bubbles.map((bubble, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.35 + idx * 0.07, duration: 0.3, ease: "easeOut" }}
+                  className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-blue-500/40 hover:bg-zinc-800 transition-colors group cursor-default text-xs"
+                  style={{ minWidth: "0" }}
+                >
+                  <span className="text-blue-400 group-hover:scale-110 transition-transform">
+                    {bubble.icon}
+                  </span>
+                  <span className="text-blue-100 font-semibold whitespace-nowrap">{bubble.label}</span>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
           {/* Right Column: Inline Availability */}
@@ -282,6 +279,91 @@ export function Home() {
                 <p className="text-blue-300/60 leading-relaxed text-sm">{feature.desc}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Plans Section ── */}
+      <section
+        className="py-20 sm:py-28 px-4 sm:px-6 md:px-12 rounded-t-[3rem] mt-10 relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-800"
+      >
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2 bg-blue-400/20" />
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6">
+            <div className="md:w-1/2">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter leading-none mb-4 text-white">
+                Speeds that melt your face.
+              </h2>
+              <p className="text-sm sm:text-base font-medium text-blue-200/80">
+                Choose the speed that fits your life. Every plan comes with our kick-ass router and 24/7 support.
+              </p>
+            </div>
+            <Link
+              to="/broadband"
+              className="group flex items-center gap-2 bg-zinc-950 text-white px-5 sm:px-7 py-3 rounded-full font-bold text-sm hover:bg-zinc-800 transition-colors shrink-0"
+            >
+              See all plans
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
+            {/* Plan 1 */}
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-7 sm:p-8 rounded-[2rem] flex flex-col hover:bg-white/15 transition-colors">
+              <div className="flex justify-between items-start mb-8 gap-4">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-black mb-1 text-white">The Essential</h3>
+                  <p className="font-medium text-blue-200/70 text-sm">
+                    Perfect for scrolling, streaming & browsing.
+                  </p>
+                </div>
+                <div className="bg-white/20 backdrop-blur px-3 py-1.5 rounded-full font-black text-base sm:text-lg shrink-0 text-white border border-white/20">
+                  150 Mbps
+                </div>
+              </div>
+              <div className="mt-auto flex items-end justify-between">
+                <div>
+                  <span className="text-4xl sm:text-5xl font-black text-white">£25</span>
+                  <span className="font-bold text-blue-200/60">/month</span>
+                </div>
+                <Link
+                  to="/broadband"
+                  className="bg-blue-600 hover:bg-blue-500 text-white p-3 rounded-full transition-colors flex items-center justify-center"
+                >
+                  <ChevronRight size={20} strokeWidth={3} />
+                </Link>
+              </div>
+            </div>
+
+            {/* Plan 2 */}
+            <div className="bg-zinc-950 text-white border border-zinc-800 p-7 sm:p-8 rounded-[2rem] flex flex-col relative overflow-hidden shadow-2xl">
+              <div className="absolute top-0 right-0 bg-blue-500 text-white font-black px-5 py-1.5 rounded-bl-2xl text-xs uppercase tracking-wider">
+                Most Popular
+              </div>
+              <div className="flex justify-between items-start mb-8 gap-4">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-black mb-1 text-blue-400">The Pro</h3>
+                  <p className="font-medium text-zinc-400 text-sm">
+                    4K streaming, heavy gaming, large families.
+                  </p>
+                </div>
+                <div className="bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded-full font-black text-base sm:text-lg shrink-0">
+                  500 Mbps
+                </div>
+              </div>
+              <div className="mt-auto flex items-end justify-between">
+                <div>
+                  <span className="text-4xl sm:text-5xl font-black text-white">£35</span>
+                  <span className="font-bold text-zinc-500">/month</span>
+                </div>
+                <Link
+                  to="/broadband"
+                  className="bg-blue-600 hover:bg-blue-500 text-white p-3 rounded-full transition-colors flex items-center justify-center"
+                >
+                  <ChevronRight size={20} strokeWidth={3} />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

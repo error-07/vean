@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
-import { Search, MapPin, CheckCircle2, ChevronRight, Zap } from "lucide-react";
+import { Search, MapPin, CheckCircle2, ChevronRight, Zap, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
 import { Navbar } from "./Navbar";
+
 
 export function CheckAvailability() {
   const [address, setAddress] = useState("");
