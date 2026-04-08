@@ -14,16 +14,15 @@ export function Layout() {
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-50 font-sans flex flex-col selection:bg-lime-400 selection:text-zinc-900">
       
-      {/* Mobile Nav Overlay (if you still need mobile menu logic) */}
+      {/* Mobile Nav Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-zinc-950 pt-24 px-6 flex flex-col gap-6"
+            className="fixed inset-0 z-40 bg-zinc-950 pt-24 px-6 flex flex-col gap-6 overflow-y-auto"
           >
-            {/* Example links - adjust as needed */}
             <a href="/broadband" className="text-4xl font-black tracking-tighter text-zinc-300 hover:text-lime-400 transition-colors">
               Broadband
             </a>
@@ -38,7 +37,7 @@ export function Layout() {
       </AnimatePresence>
 
       {/* Main Content */}
-      <main className="flex-grow flex flex-col w-full">
+      <main className="flex-grow flex flex-col w-full px-4 sm:px-6 md:px-12">
         <Outlet />
       </main>
     </div>
