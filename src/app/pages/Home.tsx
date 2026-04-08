@@ -99,7 +99,17 @@ export function Home() {
   };
 
   return (
-    <div className="flex flex-col w-full overflow-hidden bg-zinc-950 min-h-screen">
+          <>
+        <motion.div
+        className="w-full flex justify-center mt-20"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        <h1 className="text-6xl sm:text-8xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 tracking-tight">
+          Vean
+        </h1>
+      </motion.div>
       {/* ── Header ── */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 h-12 flex items-center gap-4">
@@ -158,7 +168,7 @@ export function Home() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black text-blue-100 tracking-tighter leading-[1.05] mb-4">
-              The internet,
+              The broadband,
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
                 {typedText}
@@ -367,6 +377,6 @@ export function Home() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
