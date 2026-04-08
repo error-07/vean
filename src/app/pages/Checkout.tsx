@@ -5,6 +5,7 @@ import {
   ChevronRight, ChevronLeft, Wifi, Shield, Building2, ArrowLeft, Lock
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router";
+import { Navbar } from "./Navbar";
 
 type PaymentMethod = "card" | "paypal" | "applepay" | "googlepay" | "directdebit";
 type CardType = "visa" | "mastercard" | "amex" | "discover" | "unknown";
@@ -196,8 +197,8 @@ export function Checkout() {
   ];
 
   return (
-    <div className="flex w-full bg-zinc-950 min-h-screen pt-32 pb-24 text-zinc-50 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-lime-400/10 rounded-full blur-[120px] pointer-events-none -z-10" />
+    <div className="flex flex-col w-full bg-zinc-950 min-h-screen pt-14 pb-24 text-zinc-50 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-400/10 rounded-full blur-[120px] pointer-events-none -z-10" />
 
       {/* Floating Back Button */}
       <button
@@ -207,21 +208,22 @@ export function Checkout() {
         <ArrowLeft size={18} /> Back
       </button>
 
-      <div className="max-w-6xl mx-auto px-6 md:px-12 w-full z-10 flex flex-col lg:flex-row gap-8 items-start">
+      <Navbar />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 w-full z-10 flex flex-col lg:flex-row gap-8 items-start pt-8">
         <div className="w-full lg:w-2/3 flex flex-col">
 
           {/* Progress bar */}
           <div className="w-full mb-12">
             <div className="flex justify-between items-center relative mb-8">
               <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 bg-zinc-800 -z-10 rounded-full">
-                <motion.div className="h-full bg-lime-400 rounded-full" initial={{ width: "0%" }} animate={{ width: `${((step - 1) / (steps.length - 1)) * 100}%` }} transition={{ duration: 0.3 }} />
+                <motion.div className="h-full bg-blue-400 rounded-full" initial={{ width: "0%" }} animate={{ width: `${((step - 1) / (steps.length - 1)) * 100}%` }} transition={{ duration: 0.3 }} />
               </div>
               {steps.map((s) => (
                 <div key={s.num} className="flex flex-col items-center gap-2">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-colors duration-300 ${step >= s.num ? "bg-lime-400 text-zinc-950" : "bg-zinc-900 border border-zinc-700 text-zinc-500"}`}>
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-colors duration-300 ${step >= s.num ? "bg-blue-400 text-zinc-950" : "bg-zinc-900 border border-zinc-700 text-zinc-500"}`}>
                     {step > s.num ? <CheckCircle2 size={20} /> : s.icon}
                   </div>
-                  <span className={`text-xs font-bold uppercase tracking-wide hidden sm:block ${step >= s.num ? "text-lime-400" : "text-zinc-600"}`}>{s.title}</span>
+                  <span className={`text-xs font-bold uppercase tracking-wide hidden sm:block ${step >= s.num ? "text-blue-400" : "text-zinc-600"}`}>{s.title}</span>
                 </div>
               ))}
             </div>
@@ -321,7 +323,7 @@ export function Checkout() {
     <div className="mt-8 flex justify-end">
       <button
         onClick={nextStep}
-        className="bg-lime-400 text-zinc-950 px-8 py-3 rounded-full font-black"
+        className="bg-blue-400 text-zinc-950 px-8 py-3 rounded-full font-black"
       >
         Continue
       </button>
@@ -390,8 +392,8 @@ export function Checkout() {
               className={`py-3 rounded-xl border font-bold transition-all
                 ${
                   time === slot
-                    ? "bg-lime-400 text-zinc-950 border-lime-400"
-                    : "bg-zinc-950 border-zinc-800 hover:border-lime-400"
+                    ? "bg-blue-400 text-zinc-950 border-blue-400"
+                    : "bg-zinc-950 border-zinc-800 hover:border-blue-400"
                 }`}
             >
               {slot}
@@ -413,7 +415,7 @@ export function Checkout() {
       <button
         onClick={nextStep}
         disabled={!date || !time}
-        className="bg-lime-400 text-zinc-950 px-8 py-3 rounded-full font-black disabled:opacity-50"
+        className="bg-blue-400 text-zinc-950 px-8 py-3 rounded-full font-black disabled:opacity-50"
       >
         Continue
       </button>
@@ -427,20 +429,20 @@ export function Checkout() {
                   <h2 className="text-3xl font-black mb-2">Choose your gear</h2>
                   <p className="text-zinc-400 mb-4">Every plan includes our standard Wi-Fi 6 router, but you can upgrade to our Pro Mesh system if you have a larger home.</p>
                   <div className="space-y-4">
-                    <label className={`relative flex p-6 rounded-2xl border-2 cursor-pointer transition-colors ${!mesh ? "border-lime-400 bg-lime-400/5" : "border-zinc-800 bg-zinc-950 hover:border-zinc-700"}`}>
-                      <div className="flex items-center h-6"><input name="router" type="radio" checked={!mesh} onChange={() => setMesh(false)} className="w-5 h-5 text-lime-400 bg-zinc-900 border-zinc-700 focus:ring-lime-400 focus:ring-2" /></div>
+                    <label className={`relative flex p-6 rounded-2xl border-2 cursor-pointer transition-colors ${!mesh ? "border-blue-400 bg-blue-400/5" : "border-zinc-800 bg-zinc-950 hover:border-zinc-700"}`}>
+                      <div className="flex items-center h-6"><input name="router" type="radio" checked={!mesh} onChange={() => setMesh(false)} className="w-5 h-5 text-blue-400 bg-zinc-900 border-zinc-700 focus:ring-blue-400 focus:ring-2" /></div>
                       <div className="ml-4 flex flex-col"><span className="font-black text-lg text-white">Standard Router</span><span className="text-zinc-400 text-sm mt-1">Included free. Great for apartments and smaller houses.</span></div>
-                      <div className="ml-auto font-black text-lime-400 flex items-center">Free</div>
+                      <div className="ml-auto font-black text-blue-400 flex items-center">Free</div>
                     </label>
-                    <label className={`relative flex p-6 rounded-2xl border-2 cursor-pointer transition-colors ${mesh ? "border-lime-400 bg-lime-400/5" : "border-zinc-800 bg-zinc-950 hover:border-zinc-700"}`}>
-                      <div className="flex items-center h-6"><input name="router" type="radio" checked={mesh} onChange={() => setMesh(true)} className="w-5 h-5 text-lime-400 bg-zinc-900 border-zinc-700 focus:ring-lime-400 focus:ring-2" /></div>
+                    <label className={`relative flex p-6 rounded-2xl border-2 cursor-pointer transition-colors ${mesh ? "border-blue-400 bg-blue-400/5" : "border-zinc-800 bg-zinc-950 hover:border-zinc-700"}`}>
+                      <div className="flex items-center h-6"><input name="router" type="radio" checked={mesh} onChange={() => setMesh(true)} className="w-5 h-5 text-blue-400 bg-zinc-900 border-zinc-700 focus:ring-blue-400 focus:ring-2" /></div>
                       <div className="ml-4 flex flex-col"><span className="font-black text-lg text-white">Vean Pro Mesh System</span><span className="text-zinc-400 text-sm mt-1">2-node Wi-Fi 6E system. Eliminates dead zones in large homes.</span></div>
-                      <div className="ml-auto font-black text-white flex flex-col items-end justify-center"><span className={mesh ? "text-lime-400" : ""}>+£10</span><span className="text-xs text-zinc-500 font-bold">/month</span></div>
+                      <div className="ml-auto font-black text-white flex flex-col items-end justify-center"><span className={mesh ? "text-blue-400" : ""}>+£10</span><span className="text-xs text-zinc-500 font-bold">/month</span></div>
                     </label>
                   </div>
                   <div className="mt-8 flex justify-between">
                     <button onClick={prevStep} className="text-zinc-400 hover:text-white px-4 py-3 rounded-full font-bold flex items-center gap-2 transition-colors"><ChevronLeft size={20} /> Back</button>
-                    <button onClick={nextStep} className="bg-lime-400 hover:bg-lime-500 text-zinc-950 px-8 py-3 rounded-full font-black flex items-center gap-2 transition-transform active:scale-95">
+                    <button onClick={nextStep} className="bg-blue-400 hover:bg-blue-500 text-zinc-950 px-8 py-3 rounded-full font-black flex items-center gap-2 transition-transform active:scale-95">
                       Continue to Payment <ChevronRight size={20} />
                     </button>
                   </div>
@@ -457,7 +459,7 @@ export function Checkout() {
                   <div className="space-y-3">
                     {paymentOptions.map((option) => (
                       <button key={option.id} onClick={() => setPaymentMethod(option.id)}
-                        className={`w-full flex items-center gap-4 p-4 rounded-2xl border-2 transition-all text-left ${paymentMethod === option.id ? "border-lime-400 bg-lime-400/5" : "border-zinc-800 bg-zinc-950 hover:border-zinc-700"}`}
+                        className={`w-full flex items-center gap-4 p-4 rounded-2xl border-2 transition-all text-left ${paymentMethod === option.id ? "border-blue-400 bg-blue-400/5" : "border-zinc-800 bg-zinc-950 hover:border-zinc-700"}`}
                       >
                         {/* Badge */}
                         <div className="w-16 h-9 rounded-lg flex items-center justify-center shrink-0 overflow-hidden bg-zinc-900 border border-zinc-700">
@@ -471,7 +473,7 @@ export function Checkout() {
                           <div className="font-bold text-white">{option.label}</div>
                           <div className="text-zinc-400 text-sm">{option.description}</div>
                         </div>
-                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${paymentMethod === option.id ? "border-lime-400 bg-lime-400" : "border-zinc-600"}`}>
+                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${paymentMethod === option.id ? "border-blue-400 bg-blue-400" : "border-zinc-600"}`}>
                           {paymentMethod === option.id && <div className="w-2 h-2 rounded-full bg-zinc-950" />}
                         </div>
                       </button>
@@ -487,7 +489,7 @@ export function Checkout() {
                         <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-5 space-y-4">
                           <div>
                             <label className="block text-sm font-bold text-zinc-500 mb-2 uppercase tracking-wide">Name on Card</label>
-                            <input type="text" className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all font-medium" placeholder="Jane Doe" />
+                            <input type="text" className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all font-medium" placeholder="Jane Doe" />
                           </div>
                           <div>
                             <label className="block text-sm font-bold text-zinc-500 mb-2 uppercase tracking-wide flex items-center justify-between">
@@ -510,7 +512,7 @@ export function Checkout() {
                                   const formatted = digits.replace(/(\d{4})(?=\d)/g, "$1 ").trim();
                                   setCardNumber(formatted);
                                 }}
-                                className="w-full bg-zinc-900 border border-zinc-700 rounded-xl pl-4 pr-12 py-3 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all font-medium font-mono"
+                                className="w-full bg-zinc-900 border border-zinc-700 rounded-xl pl-4 pr-12 py-3 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all font-medium font-mono"
                                 placeholder="0000 0000 0000 0000"
                                 maxLength={19}
                               />
@@ -519,7 +521,7 @@ export function Checkout() {
                               </div>
                             </div>
                             {cardType !== "unknown" && (
-                              <p className="text-lime-400 text-xs mt-1 font-bold capitalize">{cardType} card detected</p>
+                              <p className="text-blue-400 text-xs mt-1 font-bold capitalize">{cardType} card detected</p>
                             )}
                           </div>
                           <div className="grid grid-cols-2 gap-4">
@@ -536,7 +538,7 @@ export function Checkout() {
                                     setCardExpiry(digits);
                                   }
                                 }}
-                                className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all font-medium font-mono" 
+                                className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all font-medium font-mono" 
                                 placeholder="MM / YY" 
                                 maxLength={5}
                               />
@@ -545,7 +547,7 @@ export function Checkout() {
                               <label className="block text-sm font-bold text-zinc-500 mb-2 uppercase tracking-wide">
                                 {cardType === "amex" ? "CID (4 digits)" : "CVV"}
                               </label>
-                              <input type="text" className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all font-medium font-mono" placeholder={cardType === "amex" ? "0000" : "123"} maxLength={cardType === "amex" ? 4 : 3} />
+                              <input type="text" className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all font-medium font-mono" placeholder={cardType === "amex" ? "0000" : "123"} maxLength={cardType === "amex" ? 4 : 3} />
                             </div>
                           </div>
                           <div className="flex items-center gap-2 text-zinc-500 text-xs">
@@ -610,20 +612,20 @@ export function Checkout() {
                         <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-5 space-y-4">
                           <div>
                             <label className="block text-sm font-bold text-zinc-500 mb-2 uppercase tracking-wide">Account Holder Name</label>
-                            <input type="text" className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all font-medium" placeholder="Full name as on your account" />
+                            <input type="text" className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all font-medium" placeholder="Full name as on your account" />
                           </div>
                           <div className="grid grid-cols-2 gap-4">
                             <div>
                               <label className="block text-sm font-bold text-zinc-500 mb-2 uppercase tracking-wide">Sort Code</label>
-                              <input type="text" className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all font-medium font-mono" placeholder="00-00-00" maxLength={8} />
+                              <input type="text" className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all font-medium font-mono" placeholder="00-00-00" maxLength={8} />
                             </div>
                             <div>
                               <label className="block text-sm font-bold text-zinc-500 mb-2 uppercase tracking-wide">Account Number</label>
-                              <input type="text" className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all font-medium font-mono" placeholder="12345678" maxLength={8} />
+                              <input type="text" className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all font-medium font-mono" placeholder="12345678" maxLength={8} />
                             </div>
                           </div>
                           <div className="flex items-start gap-3 bg-zinc-900 border border-zinc-800 rounded-xl p-4">
-                            <Building2 className="text-lime-400 shrink-0 mt-0.5" size={18} />
+                            <Building2 className="text-blue-400 shrink-0 mt-0.5" size={18} />
                             <p className="text-xs text-zinc-400 leading-relaxed">
                               Protected by the <span className="text-white font-bold">Direct Debit Guarantee</span>. Cancel any time with a full refund of any erroneous payments.
                             </p>
@@ -636,7 +638,7 @@ export function Checkout() {
                   <div className="mt-4 flex justify-between items-center">
                     <button onClick={prevStep} className="text-zinc-400 hover:text-white px-4 py-3 rounded-full font-bold flex items-center gap-2 transition-colors"><ChevronLeft size={20} /> Back</button>
                     {paymentMethod !== "applepay" && paymentMethod !== "googlepay" && (
-                      <button onClick={nextStep} className="bg-lime-400 hover:bg-lime-500 text-zinc-950 px-8 py-4 rounded-full font-black flex items-center gap-2 transition-transform active:scale-95 text-lg">
+                      <button onClick={nextStep} className="bg-blue-400 hover:bg-blue-500 text-zinc-950 px-8 py-4 rounded-full font-black flex items-center gap-2 transition-transform active:scale-95 text-lg">
                         Confirm Order
                       </button>
                     )}
@@ -657,13 +659,13 @@ export function Checkout() {
                   <div className="font-bold text-lg">Vean {planName}</div>
                   <div className="text-zinc-400 text-sm flex items-center gap-1 mt-1"><Wifi size={14} /> {planSpeed} Mbps Average Speed</div>
                   {billing === "annually" && (
-                    <div className="mt-2 inline-flex items-center gap-1 bg-lime-400/10 text-lime-400 text-xs font-bold px-2 py-0.5 rounded-full border border-lime-400/20">Annual billing — 10% off</div>
+                    <div className="mt-2 inline-flex items-center gap-1 bg-blue-400/10 text-blue-400 text-xs font-bold px-2 py-0.5 rounded-full border border-blue-400/20">Annual billing — 10% off</div>
                   )}
                 </div>
                 <div className="font-black text-lg">£{planPrice.toFixed(2)}</div>
               </div>
               <div className="space-y-3 border-b border-zinc-800 pb-6">
-                <div className="flex justify-between items-center text-sm"><span className="text-zinc-400">Upfront installation</span><span className="font-bold text-lime-400">FREE</span></div>
+                <div className="flex justify-between items-center text-sm"><span className="text-zinc-400">Upfront installation</span><span className="font-bold text-blue-400">FREE</span></div>
                 <div className="flex justify-between items-center text-sm"><span className="text-zinc-400">Standard Wi-Fi 6 Router</span><span className="font-bold">Included</span></div>
                 {mesh && (
                   <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="flex justify-between items-center text-sm">
@@ -675,7 +677,7 @@ export function Checkout() {
                     <span className="text-zinc-400">Install Visit</span>
                     <div className="text-right">
                       <div className="font-bold">{new Date(date).toLocaleDateString()}</div>
-                      <div className="text-xs text-lime-400">{time}</div>
+                      <div className="text-xs text-blue-400">{time}</div>
                     </div>
                   </div>
                 )}
@@ -684,9 +686,9 @@ export function Checkout() {
                 <span className="font-bold text-zinc-400">Monthly total</span>
                 <span className="text-3xl font-black text-white">£{total.toFixed(2)}</span>
               </div>
-              <div className="bg-lime-400/10 border border-lime-400/20 rounded-xl p-4 flex gap-3 mt-4">
-                <Shield className="text-lime-400 shrink-0" size={20} />
-                <p className="text-xs text-lime-400/80 leading-relaxed">Fixed price guarantee. Your monthly price won't increase during your contract term.</p>
+              <div className="bg-blue-400/10 border border-blue-400/20 rounded-xl p-4 flex gap-3 mt-4">
+                <Shield className="text-blue-400 shrink-0" size={20} />
+                <p className="text-xs text-blue-400/80 leading-relaxed">Fixed price guarantee. Your monthly price won't increase during your contract term.</p>
               </div>
             </div>
           </div>

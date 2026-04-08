@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Navbar } from "./Navbar";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Wifi, Shield, CreditCard, Clock, Calendar, 
@@ -17,10 +18,11 @@ export function AccountDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-50 pt-24 pb-24 relative">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-lime-400/5 rounded-full blur-[150px] pointer-events-none -z-10" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-lime-400/5 rounded-full blur-[120px] pointer-events-none -z-10" />
+    <div className="min-h-screen bg-zinc-950 text-zinc-50 pt-14 pb-24 relative">
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-400/5 rounded-full blur-[150px] pointer-events-none -z-10" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-400/5 rounded-full blur-[120px] pointer-events-none -z-10" />
 
+      <Navbar />
       <div className="max-w-6xl mx-auto px-6 w-full">
         <header className="mb-12">
           <h1 className="text-4xl md:text-5xl font-black mb-2 tracking-tighter">Welcome back, Alex.</h1>
@@ -37,7 +39,7 @@ export function AccountDashboard() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all whitespace-nowrap ${
                     activeTab === tab.id 
-                      ? "bg-lime-400 text-zinc-950" 
+                      ? "bg-blue-400 text-zinc-950" 
                       : "text-zinc-400 hover:text-white hover:bg-zinc-900"
                   }`}
                 >
@@ -48,7 +50,7 @@ export function AccountDashboard() {
             </nav>
             
             <div className="mt-8 hidden lg:block bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
-              <div className="flex items-center gap-3 mb-4 text-lime-400">
+              <div className="flex items-center gap-3 mb-4 text-blue-400">
                 <HelpCircle size={24} />
                 <h3 className="font-bold text-white">Need help?</h3>
               </div>
@@ -71,8 +73,8 @@ export function AccountDashboard() {
                   className="space-y-6"
                 >
                   {/* Status Banner */}
-                  <div className="bg-lime-400 border border-lime-400/20 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative overflow-hidden">
-                    <div className="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-lime-300 to-transparent opacity-20" />
+                  <div className="bg-blue-400 border border-blue-400/20 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative overflow-hidden">
+                    <div className="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-blue-300 to-transparent opacity-20" />
                     <div className="z-10">
                       <div className="inline-flex items-center gap-2 bg-zinc-950/10 px-3 py-1 rounded-full text-zinc-950 font-bold text-sm mb-3 uppercase tracking-wide">
                         <Clock size={14} /> Pending Installation
@@ -82,7 +84,7 @@ export function AccountDashboard() {
                         Our engineer will arrive on <strong className="text-zinc-950">14 Oct, 09:00 - 11:00</strong>. Make sure someone over 18 is home.
                       </p>
                     </div>
-                    <button className="z-10 bg-zinc-950 text-lime-400 px-6 py-3 rounded-full font-bold hover:bg-zinc-900 transition-colors whitespace-nowrap">
+                    <button className="z-10 bg-zinc-950 text-blue-400 px-6 py-3 rounded-full font-bold hover:bg-zinc-900 transition-colors whitespace-nowrap">
                       Reschedule
                     </button>
                   </div>
@@ -95,7 +97,7 @@ export function AccountDashboard() {
                       </div>
                       <h3 className="font-bold text-lg mb-1">Vean 500 Plan</h3>
                       <p className="text-zinc-400 text-sm mb-4">500 Mbps pure fibre connection. No unexpected mid-contract price hikes.</p>
-                      <button onClick={() => setActiveTab("plan")} className="text-lime-400 font-bold text-sm flex items-center gap-1 hover:text-lime-300 transition-colors">
+                      <button onClick={() => setActiveTab("plan")} className="text-blue-400 font-bold text-sm flex items-center gap-1 hover:text-blue-300 transition-colors">
                         View Plan Details <ChevronRight size={16} />
                       </button>
                     </div>
@@ -106,7 +108,7 @@ export function AccountDashboard() {
                       </div>
                       <h3 className="font-bold text-lg mb-1">Next Payment</h3>
                       <p className="text-zinc-400 text-sm mb-4">£35.00 scheduled for <strong className="text-white">20 Oct</strong>. You won't be billed until your service is active.</p>
-                      <button onClick={() => setActiveTab("billing")} className="text-lime-400 font-bold text-sm flex items-center gap-1 hover:text-lime-300 transition-colors">
+                      <button onClick={() => setActiveTab("billing")} className="text-blue-400 font-bold text-sm flex items-center gap-1 hover:text-blue-300 transition-colors">
                         Manage Billing <ChevronRight size={16} />
                       </button>
                     </div>
@@ -115,9 +117,9 @@ export function AccountDashboard() {
                   {/* Next Steps / Checklist */}
                   <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 mt-6">
                     <h3 className="text-xl font-black mb-6">Installation Checklist</h3>
-                    <div className="space-y-6 relative before:absolute before:inset-0 before:ml-[15px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-lime-400 before:via-zinc-800 before:to-transparent">
+                    <div className="space-y-6 relative before:absolute before:inset-0 before:ml-[15px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-blue-400 before:via-zinc-800 before:to-transparent">
                       <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                        <div className="flex items-center justify-center w-8 h-8 rounded-full border-4 border-zinc-900 bg-lime-400 text-zinc-950 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[0_0_0_4px_#18181b] z-10">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full border-4 border-zinc-900 bg-blue-400 text-zinc-950 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[0_0_0_4px_#18181b] z-10">
                           <CheckCircle2 size={16} />
                         </div>
                         <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] bg-zinc-950 p-4 rounded-xl border border-zinc-800 ml-4 md:ml-0">
@@ -127,11 +129,11 @@ export function AccountDashboard() {
                       </div>
 
                       <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div className="flex items-center justify-center w-8 h-8 rounded-full border-4 border-zinc-900 bg-lime-400 text-zinc-950 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[0_0_0_4px_#18181b] z-10">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full border-4 border-zinc-900 bg-blue-400 text-zinc-950 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[0_0_0_4px_#18181b] z-10">
                           <Calendar size={14} />
                         </div>
-                        <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] bg-zinc-950 p-4 rounded-xl border border-zinc-800 border-lime-400/30 ml-4 md:ml-0">
-                          <h4 className="font-bold text-lime-400 mb-1">Installation Day</h4>
+                        <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] bg-zinc-950 p-4 rounded-xl border border-zinc-800 border-blue-400/30 ml-4 md:ml-0">
+                          <h4 className="font-bold text-blue-400 mb-1">Installation Day</h4>
                           <p className="text-sm text-zinc-400">Engineer arrives to connect your new pure fibre line.</p>
                         </div>
                       </div>
@@ -162,7 +164,7 @@ export function AccountDashboard() {
                     <div className="flex justify-between items-start mb-8">
                       <div>
                         <h2 className="text-3xl font-black mb-2">Vean 500 Plan</h2>
-                        <div className="inline-flex items-center gap-2 bg-lime-400/10 text-lime-400 px-3 py-1 rounded-full text-sm font-bold border border-lime-400/20">
+                        <div className="inline-flex items-center gap-2 bg-blue-400/10 text-blue-400 px-3 py-1 rounded-full text-sm font-bold border border-blue-400/20">
                           <Shield size={14} /> Fixed Price Guarantee
                         </div>
                       </div>
@@ -197,7 +199,7 @@ export function AccountDashboard() {
                           <h4 className="font-bold">Standard Wi-Fi 6 Router</h4>
                           <p className="text-zinc-500 text-sm">Included with your plan.</p>
                         </div>
-                        <div className="text-lime-400 font-bold text-sm">
+                        <div className="text-blue-400 font-bold text-sm">
                           FREE
                         </div>
                       </div>
@@ -227,7 +229,7 @@ export function AccountDashboard() {
                           <div className="text-sm text-zinc-500">Expires 12/26</div>
                         </div>
                       </div>
-                      <button className="text-lime-400 font-bold text-sm hover:text-white transition-colors">
+                      <button className="text-blue-400 font-bold text-sm hover:text-white transition-colors">
                         Update
                       </button>
                     </div>
@@ -277,20 +279,20 @@ export function AccountDashboard() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-xs font-bold text-zinc-500 uppercase tracking-wide mb-2">First Name</label>
-                            <input type="text" defaultValue="Alex" className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all font-medium text-white" />
+                            <input type="text" defaultValue="Alex" className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all font-medium text-white" />
                           </div>
                           <div>
                             <label className="block text-xs font-bold text-zinc-500 uppercase tracking-wide mb-2">Last Name</label>
-                            <input type="text" defaultValue="Smith" className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all font-medium text-white" />
+                            <input type="text" defaultValue="Smith" className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all font-medium text-white" />
                           </div>
                         </div>
                         <div>
                           <label className="block text-xs font-bold text-zinc-500 uppercase tracking-wide mb-2">Email Address</label>
-                          <input type="email" defaultValue="alex.smith@example.com" className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all font-medium text-white" />
+                          <input type="email" defaultValue="alex.smith@example.com" className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all font-medium text-white" />
                         </div>
                         <div>
                           <label className="block text-xs font-bold text-zinc-500 uppercase tracking-wide mb-2">Phone Number</label>
-                          <input type="tel" defaultValue="+44 7700 900077" className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:border-lime-400 focus:ring-1 focus:ring-lime-400 transition-all font-medium text-white" />
+                          <input type="tel" defaultValue="+44 7700 900077" className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all font-medium text-white" />
                         </div>
                       </div>
                     </div>
@@ -302,7 +304,7 @@ export function AccountDashboard() {
                         <div>
                           <div className="font-medium text-white">123 Fibre Street</div>
                           <div className="text-zinc-500">London, SW1A 1AA</div>
-                          <div className="text-xs text-lime-400 mt-2 font-bold uppercase tracking-wide">Primary Installation Address</div>
+                          <div className="text-xs text-blue-400 mt-2 font-bold uppercase tracking-wide">Primary Installation Address</div>
                         </div>
                       </div>
                     </div>
@@ -311,7 +313,7 @@ export function AccountDashboard() {
                       <button className="text-zinc-400 font-bold px-6 py-3 hover:text-white transition-colors">
                         Cancel
                       </button>
-                      <button className="bg-lime-400 text-zinc-950 font-black px-8 py-3 rounded-full hover:bg-lime-500 transition-transform active:scale-95">
+                      <button className="bg-blue-400 text-zinc-950 font-black px-8 py-3 rounded-full hover:bg-blue-500 transition-transform active:scale-95">
                         Save Changes
                       </button>
                     </div>
