@@ -167,7 +167,7 @@ export function Home() {
               Live in 20+ UK Cities
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black text-blue-100 tracking-tighter leading-[1.05] mb-4">
+            <h1 className="text-center sm:text-left text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black text-blue-100 tracking-tighter leading-[1.05] mb-4">
               The broadband,
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
