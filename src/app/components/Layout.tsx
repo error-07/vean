@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { useState, useEffect } from "react";
-import { Navbar } from "'../pages/Navbar'";
+import Navbar from '../pages/Navbar'
 
 export function Layout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
