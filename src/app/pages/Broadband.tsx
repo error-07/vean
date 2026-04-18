@@ -1,13 +1,16 @@
 import { motion, AnimatePresence } from "motion/react";
 import { CheckCircle2, Info, WifiHigh, Tv, Gamepad2, Users, X } from "lucide-react";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { Navbar } from "./Navbar";
 
 export function Broadband() {
   const [billing, setBilling] = useState<"monthly" | "annually">("monthly");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const preSelected = (location.state as { selectedPlan?: string } | null)?.selectedPlan ?? null;
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(preSelected);
 
   const plans = [
     {
@@ -38,6 +41,7 @@ export function Broadband() {
   ];
 
   const handleSelectPlan = (plan: (typeof plans)[0]) => {
+    setSelectedPlan(plan.name);
     const finalPrice = billing === "annually" ? Math.floor(plan.price * 0.9) : plan.price;
     navigate("/checkout", {
       state: {
@@ -104,13 +108,21 @@ export function Broadband() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.15 + 0.3 }}
                 key={plan.name}
-                className={`relative flex flex-col p-8 rounded-[2.5rem] ${
-                  plan.popular
-                    ? "bg-zinc-900 border-2 border-blue-400/50 shadow-2xl shadow-blue-400/5 md:-translate-y-4"
-                    : "bg-zinc-900 border border-zinc-800"
+                className={`relative flex flex-col p-8 rounded-[2.5rem] transition-all ${
+                  selectedPlan === plan.name
+                    ? "bg-zinc-900 border-2 border-blue-400 shadow-2xl shadow-blue-400/10 ring-2 ring-blue-400/20 md:-translate-y-4"
+                    : plan.popular
+                    ? "bg-zinc-900 shadow-2xl shadow-blue-400/5 md:-translate-y-4"
+                    : "bg-zinc-900 border border-zinc-800 hover:border-zinc-700"
                 }`}
+                onClick={() => setSelectedPlan(plan.name)}
               >
-                {plan.popular && (
+                {selectedPlan === plan.name && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-400 text-zinc-950 font-black px-6 py-1.5 rounded-full text-sm uppercase tracking-wide whitespace-nowrap">
+                    Selected
+                  </div>
+                )}
+                {plan.popular && !selectedPlan && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-400 text-zinc-950 font-black px-6 py-1.5 rounded-full text-sm uppercase tracking-wide">
                     Most Popular
                   </div>

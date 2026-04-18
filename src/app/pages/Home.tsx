@@ -191,10 +191,11 @@ function HomeCarousel() {
                   {plans.map((p) => (
                     <div
                       key={p.name}
-                      className={`flex flex-col justify-between rounded-2xl p-3 border ${
+                      onClick={() => navigate("/broadband", { state: { selectedPlan: p.name } })}
+                      className={`flex flex-col justify-between rounded-2xl p-3 border cursor-pointer transition-all hover:scale-[1.03] active:scale-95 ${
                         p.popular
                           ? "bg-blue-400/10 border-blue-400/40"
-                          : "bg-zinc-950 border-zinc-800"
+                          : "bg-zinc-950 border-zinc-800 hover:border-zinc-600"
                       }`}
                     >
                       <div>
@@ -287,6 +288,7 @@ function HomeCarousel() {
    MAIN HOME PAGE
 ───────────────────────────────────────────── */
 export function Home() {
+  const navigate = useNavigate();
   const [typedText, setTypedText] = useState("");
   const [postcode, setPostcode] = useState("");
   const [status, setStatus] = useState<"idle" | "searching" | "found">("idle");
@@ -682,8 +684,8 @@ export function Home() {
                   <span className="text-3xl font-black text-white">£{plan.price}</span>
                   <span className="text-zinc-500 text-xs font-bold">/month</span>
                 </div>
-                <Link
-                  to="/broadband"
+                <button
+                  onClick={() => navigate("/broadband", { state: { selectedPlan: plan.name } })}
                   className={`flex items-center gap-1.5 px-5 py-2.5 rounded-full font-black text-sm transition-all hover:scale-105 active:scale-95 ${
                     plan.popular
                       ? "bg-blue-400 text-zinc-950 hover:bg-blue-300"
@@ -691,7 +693,7 @@ export function Home() {
                   }`}
                 >
                   Select <ChevronRight size={14} />
-                </Link>
+                </button>
               </div>
             </motion.div>
           ))}
